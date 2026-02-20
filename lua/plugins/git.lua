@@ -1,22 +1,20 @@
 return {
-  -- GITSIGNS: Ver cambios en el lateral
-  {
-    "lewis6991/gitsigns.nvim",
-    opts = {
-      current_line_blame = true, -- Te dice quién hizo el cambio en la línea actual
-    },
-  },
-
-  -- NEOGIT: Interfaz visual para Git
   {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",
+      "nvim-telescope/telescope.nvim",
     },
-    config = true,
+    -- Esto obliga a que este atajo gane sobre el de LazyVim
     keys = {
-      { "<leader>gs", "<cmd>Neogit<cr>", desc = "Git Status" },
+      { "<leader>gs", "<cmd>Neogit<cr>", desc = "Neogit Status" },
+    },
+    opts = {
+      disable_commit_confirmation = true,
+      integrations = {
+        diffview = true,
+      },
     },
   },
 }
